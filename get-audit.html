@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get Your AI Readiness Audit — EverGreen Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #141a24;
+  --ink-soft: rgba(20,26,36,.58);
+  --ink-faint: rgba(20,26,36,.38);
+  --paper: #f7f3ec;
+  --paper-2: #efe9df;
+  --white: #fffdf9;
+  --copper: #b4703f;
+  --copper-bright: #c88450;
+  --copper-deep: #96562e;
+  --navy: #17202e;
+  --hairline: rgba(20,26,36,.14);
+  --serif: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --sans: 'Inter', Arial, sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: radial-gradient(ellipse 60% 45% at 70% 20%, rgba(180,112,63,.08) 0%, transparent 70%), var(--paper);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.topbar {
+  padding: 1.3em 1.5em;
+  border-bottom: 1px solid var(--hairline);
+}
+.back-link {
+  color: var(--ink-soft);
+  font-size: .82em;
+  font-weight: 500;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: .5em;
+  transition: color .2s;
+}
+.back-link:hover { color: var(--copper); }
+.back-link svg { width: 14px; height: 14px; }
+
+.wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3em 1.5em;
+}
+.card {
+  width: 100%;
+  max-width: 480px;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  border-radius: 4px;
+  padding: 2.6em 2.4em;
+  box-shadow: 0 1px 3px rgba(20,26,36,.04), 0 12px 32px rgba(20,26,36,.06);
+}
+
+.super {
+  display: inline-flex;
+  align-items: center;
+  gap: .6em;
+  font-size: .72em;
+  font-weight: 600;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--copper);
+  margin-bottom: .6em;
+}
+.super::before { content: ""; display: inline-block; width: 1.4em; height: 1px; background: var(--copper); }
+
+h1 {
+  font-family: var(--serif);
+  font-size: 2em;
+  font-weight: 500;
+  letter-spacing: -.015em;
+  line-height: 1.12;
+  margin-bottom: .5em;
+}
+.sub {
+  color: var(--ink-soft);
+  font-size: .95em;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+}
+
+.field { margin-bottom: 1.15em; }
+label {
+  display: block;
+  font-size: .78em;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: .45em;
+}
+input {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 1em;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: 3px;
+  padding: .8em .9em;
+  transition: border-color .2s, background .2s;
+}
+input:focus {
+  outline: none;
+  border-color: var(--copper);
+  background: var(--white);
+}
+input::placeholder { color: var(--ink-faint); }
+input.err { border-color: #c44d3a; }
+
+.hint {
+  font-size: .8em;
+  color: var(--ink-faint);
+  margin-top: .35em;
+}
+
+button[type="submit"] {
+  width: 100%;
+  font-family: var(--sans);
+  font-size: 1em;
+  font-weight: 500;
+  color: var(--white);
+  background: var(--copper);
+  border: none;
+  border-radius: 2em;
+  padding: .85em 1.4em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .7em;
+  transition: background-color .2s ease, transform .2s ease;
+  margin-top: .6em;
+}
+button[type="submit"]:hover { background: var(--copper-deep); }
+button[type="submit"]:disabled { opacity: .6; cursor: not-allowed; }
+button[type="submit"] .arr { transition: transform .25s ease; }
+button[type="submit"]:hover .arr { transform: translateX(.3em); }
+
+.next-steps {
+  margin-top: 1.6em;
+  padding-top: 1.3em;
+  border-top: 1px solid var(--hairline);
+  font-size: .85em;
+  color: var(--ink-soft);
+}
+.next-steps strong { color: var(--ink); font-weight: 600; }
+
+.error-banner {
+  display: none;
+  background: #fdf1ef;
+  border-left: 3px solid #c44d3a;
+  color: #8a2f1f;
+  font-size: .85em;
+  padding: .8em 1em;
+  border-radius: 0 3px 3px 0;
+  margin-bottom: 1.2em;
+}
+
+/* Success state */
+.success { display: none; text-align: center; }
+.success .check {
+  width: 3em; height: 3em;
+  border-radius: 50%;
+  background: var(--navy);
+  color: var(--copper-bright);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3em;
+  margin: 0 auto 1.1em;
+}
+.success h2 {
+  font-family: var(--serif);
+  font-size: 1.5em;
+  font-weight: 500;
+  letter-spacing: -.01em;
+  margin-bottom: .5em;
+}
+.success p { color: var(--ink-soft); font-size: .92em; line-height: 1.6; }
+.success .steps {
+  text-align: left;
+  margin: 1.4em 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--hairline);
+}
+.success .steps li {
+  padding: .7em 0;
+  border-bottom: 1px solid var(--hairline);
+  font-size: .88em;
+  color: var(--ink-soft);
+  display: flex;
+  gap: .7em;
+  align-items: baseline;
+}
+.success .steps li span { color: var(--copper); font-weight: 600; flex-shrink: 0; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <a class="back-link" href="index.html">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>
+    Back
+  </a>
+</div>
+
+<div class="wrap">
+  <div class="card">
+
+    <!-- FORM -->
+    <div id="formView">
+      <div class="super">Free AI Readiness Audit</div>
+      <h1>Get your audit.</h1>
+      <p class="sub">Tell us your firm's website and we'll run the audit now. Your report lands in your inbox in a few minutes.</p>
+
+      <div class="error-banner" id="errorBanner"></div>
+
+      <form id="auditForm" novalidate>
+        <div class="field">
+          <label for="name">Your name</label>
+          <input type="text" id="name" name="name" placeholder="Jane Doe" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="firm">Firm name</label>
+          <input type="text" id="firm" name="firm" placeholder="Smith & Associates" autocomplete="organization">
+        </div>
+        <div class="field">
+          <label for="url">Firm website</label>
+          <input type="url" id="url" name="url" placeholder="https://yourfirm.com" autocomplete="url" inputmode="url">
+          <div class="hint">This is what we audit. Double-check it's your firm's live site.</div>
+        </div>
+        <div class="field">
+          <label for="email">Work email</label>
+          <input type="email" id="email" name="email" placeholder="you@yourfirm.com" autocomplete="email">
+          <div class="hint">Your report is sent here.</div>
+        </div>
+
+        <button type="submit" id="submitBtn">
+          Run my audit
+          <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </button>
+      </form>
+
+      <div class="next-steps">
+        <strong>What happens next:</strong> we score 5 operational domains, flag governance risks, and put your specific number on the table. Then you get a link to book a 15-minute review. No charge. You keep the report.
+      </div>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success" id="successView">
+      <div class="check">&#10003;</div>
+      <h2>Your audit is running.</h2>
+      <p>We're analyzing <strong id="successUrl"></strong> now. This takes about 90 seconds.</p>
+      <ul class="steps">
+        <li><span>1.</span> We run your audit across 5 domains and 7-8 governance flags.</li>
+        <li><span>2.</span> Your report lands in your inbox as a PDF.</li>
+        <li><span>3.</span> We send a link to book your 15-minute review.</li>
+      </ul>
+      <p>Check your inbox in a few minutes. Nothing else to do.</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// ============================================================
+// SUBMIT TARGET
+// Where the form posts. Two quick options:
+//   (1) Formspree (fastest, zero setup): replace below with your
+//       Formspree endpoint, e.g. "https://formspree.io/f/yourid"
+//       then change Content-Type to application/json (it accepts both).
+//   (2) Google Apps Script webhook -> Sheet (durable, recommended for
+//       the full pipeline): paste your /exec URL here.
+// ============================================================
+const SUBMIT_URL = "YOUR_APPS_SCRIPT_OR_FORMSPREE_ENDPOINT_HERE";
+
+const form = document.getElementById('auditForm');
+const submitBtn = document.getElementById('submitBtn');
+const errorBanner = document.getElementById('errorBanner');
+const formView = document.getElementById('formView');
+const successView = document.getElementById('successView');
+const successUrl = document.getElementById('successUrl');
+
+function setError(msg) {
+  if (!msg) { errorBanner.style.display = 'none'; return; }
+  errorBanner.textContent = msg;
+  errorBanner.style.display = 'block';
+}
+
+function isValidUrl(str) {
+  try {
+    const u = new URL(str);
+    return u.protocol === 'http:' || u.protocol === 'https:';
+  } catch { return false; }
+}
+
+function normalizeUrl(str) {
+  str = str.trim();
+  if (!/^https?:\/\//i.test(str)) str = 'https://' + str;
+  return str;
+}
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  setError(null);
+
+  const name = document.getElementById('name').value.trim();
+  const firm = document.getElementById('firm').value.trim();
+  const rawUrl = document.getElementById('url').value.trim();
+  const email = document.getElementById('email').value.trim();
+
+  // Validate
+  if (!name) { setError('Enter your name.'); document.getElementById('name').focus(); return; }
+  if (!firm) { setError('Enter your firm name.'); document.getElementById('firm').focus(); return; }
+  if (!rawUrl || !isValidUrl(normalizeUrl(rawUrl))) { setError("Enter your firm's website, starting with https://."); document.getElementById('url').focus(); return; }
+  if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { setError('Enter a valid work email.'); document.getElementById('email').focus(); return; }
+
+  const url = normalizeUrl(rawUrl);
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Running your audit...';
+
+  try {
+    if (SUBMIT_URL.includes('YOUR_')) {
+      // No backend configured yet: simulate a success for preview.
+      await new Promise(r => setTimeout(r, 600));
+    } else {
+      const res = await fetch(SUBMIT_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, firm, url, email, timestamp: new Date().toISOString() }),
+      });
+      if (!res.ok) throw new Error('Submission failed');
+    }
+
+    successUrl.textContent = firm;
+    formView.style.display = 'none';
+    successView.style.display = 'block';
+  } catch (err) {
+    setError('Something went wrong. Please try again, or email hey@elijahsmithbey.com.');
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = 'Run my audit <svg class="arr" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>';
+  }
+});
+</script>
+
+</body>
+</html>
